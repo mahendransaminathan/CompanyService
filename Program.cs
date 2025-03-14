@@ -1,7 +1,8 @@
 using CompanyService.Data;
 using Microsoft.EntityFrameworkCore;
 using CompanyService.Providers;
-using CompanyService.PersonalServices;
+using CompanyService.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -26,7 +27,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddScoped<ICompanyProvider, CompanyProvider>();
-builder.Services.AddScoped<CompanyService.Services.ICompanyService>();
+builder.Services.AddScoped<ICompanyService, CompanyService.Services.CompanyService>();
 
 
 var app = builder.Build();

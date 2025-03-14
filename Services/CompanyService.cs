@@ -3,7 +3,7 @@ using CompanyService.Entities;
 using CompanyService.Providers;
 using CompanyService.Services; // Add this line
 
-namespace CompanyService.PersonalServices
+namespace CompanyService.Services
 {
     public class CompanyService : ICompanyService
     {
