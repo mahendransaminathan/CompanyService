@@ -1,8 +1,33 @@
+using CompanyService.Data;
+using Microsoft.EntityFrameworkCore;
+using CompanyService.Providers;
+using CompanyService.PersonalServices;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddControllers(); // Registers controllers
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.EnableDetailedErrors(builder.Configuration.GetValue<bool>("EntityFramework:EnableDetailedErrors"));
+    options.EnableSensitiveDataLogging(builder.Configuration.GetValue<bool>("EntityFramework:EnableSensitiveDataLogging"));
+});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost",
+        builder => builder.WithOrigins("http://localhost:3000",
+                                        "https://productlicenseapproval-bsb3a3buh3bwavfy.northeurope-01.azurewebsites.net")  // Allow your frontend's URL
+
+                          .AllowAnyHeader()                   // Allow all headers
+                          .AllowAnyMethod()                   // Allow all methods (GET, POST, etc.)
+                          .AllowCredentials());
+});
+
+builder.Services.AddScoped<ICompanyProvider, CompanyProvider>();
+builder.Services.AddScoped<CompanyService.PersonalServices.CompanyService>();
+
 
 var app = builder.Build();
 
@@ -32,6 +57,11 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
+
+app.UseRouting();
+// Use CORS policy globally
+app.UseCors("AllowLocalhost");
+app.MapControllers(); // Maps controller routes
 
 app.Run();
 
