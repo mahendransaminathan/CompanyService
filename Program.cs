@@ -26,7 +26,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddScoped<ICompanyProvider, CompanyProvider>();
-builder.Services.AddScoped<CompanyService.PersonalServices.CompanyService>();
+builder.Services.AddScoped<CompanyService.Services.ICompanyService>();
 
 
 var app = builder.Build();
