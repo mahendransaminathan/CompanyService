@@ -14,6 +14,7 @@ jobs:
 
     env:
       COSMOS_DB_KEY: ${{ secrets.COSMOS_DB_KEY }}
+      COSMOS_DB_ENDPOINT: ${{ secrets.COSMOS_DB_ENDPOINT }}
     steps:
       - uses: actions/checkout@v3
 

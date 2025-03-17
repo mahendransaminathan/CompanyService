@@ -13,8 +13,8 @@ builder.Services.AddControllers(); // Registers controllers
 builder.Services.AddSingleton<CosmosClient>(serviceProvider => 
 {
     var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-    var cosmosEndPoint = configuration["CosmosDb:Endpoint"];
-    var cosmosKey = configuration["CosmosDb:Key"];
+    var cosmosEndPoint = Environment.GetEnvironmentVariable("COSMOS_DB_ENDPOINT");
+    var cosmosKey = Environment.GetEnvironmentVariable("COSMOS_DB_KEY");    
     return new CosmosClient(cosmosEndPoint, cosmosKey);
 }
 );
