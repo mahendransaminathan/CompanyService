@@ -12,6 +12,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
+    env:
+      COSMOS_DB_KEY: ${{ secrets.COSMOS_DB_KEY }}
     steps:
       - uses: actions/checkout@v3
 
@@ -20,9 +22,6 @@ jobs:
         with:
           dotnet-version: '9.0.x'
           
-      - name: Set Cosmos DB Key as Environment Variable
-        run: echo "COSMOS_DB_KEY=${{ secrets.COSMOS_DB_KEY }}" >> $GITHUB_ENV
-        
       - name: Restore
         run: dotnet restore ./CompanyService.sln
 
