@@ -1,31 +1,41 @@
 using CompanyService.Data;
 using CompanyService.Entities;
 using CompanyService.Providers;
+using Microsoft.Azure.Cosmos;
 
 namespace CompanyService.Providers
 {
     public class CompanyProvider : ICompanyProvider
     {
-        private readonly ApplicationDBContext? dbContext;
+        private readonly CosmosClient mCosmosClient;
+        private readonly Database mDatabase;
+
+        private readonly Container mContainer;
 
         public CompanyProvider()
         {
          
         }
-        public CompanyProvider(ApplicationDBContext dbContext)
-        {            
-            this.dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+        public CompanyProvider(CosmosClient cosmosClient, IConfiguration configuration)
+        {
+            mCosmosClient = cosmosClient;
+
+            mDatabase = mCosmosClient.GetDatabase(configuration["CosmosDb:DatabaseName"]);
+
+            mContainer = mDatabase.GetContainer(configuration["CosmosDb:ContainerName"]);
+
         }
 
-        public virtual void AddPerson(Company company)
+        public async void AddPerson(Company company)
         {
-           if (dbContext == null)
+           if (string.IsNullOrEmpty(company.Id.ToString()))
             {
-                throw new InvalidOperationException("Database context is not available.");
+                company.Id = Guid.NewGuid().ToString();
+
             }
 
-            dbContext.Companies.Add(company);
-            dbContext.SaveChanges();    
+            await mContainer.CreateItemAsync(company, new PartitionKey(company.Id));
+
         }       
     }         
 }

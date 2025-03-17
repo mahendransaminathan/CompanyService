@@ -2,19 +2,24 @@ using CompanyService.Data;
 using Microsoft.EntityFrameworkCore;
 using CompanyService.Providers;
 using CompanyService.Services;
-
+using Microsoft.Azure.Cosmos;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddControllers(); // Registers controllers
-builder.Services.AddDbContext<ApplicationDBContext>(options =>
+
+builder.Services.AddSingleton<CosmosClient>(serviceProvider => 
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-    options.EnableDetailedErrors(builder.Configuration.GetValue<bool>("EntityFramework:EnableDetailedErrors"));
-    options.EnableSensitiveDataLogging(builder.Configuration.GetValue<bool>("EntityFramework:EnableSensitiveDataLogging"));
-});
+    var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+    var cosmosEndPoint = configuration["CosmosDb:Endpoint"];
+    var cosmosKey = configuration["CosmosDb:Key"];
+    return new CosmosClient(cosmosEndPoint, cosmosKey);
+}
+);
+
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost",
