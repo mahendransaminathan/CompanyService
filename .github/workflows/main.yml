@@ -19,7 +19,10 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '9.0.x'
-
+          
+      - name: Set Cosmos DB Key as Environment Variable
+        run: echo "COSMOS_DB_KEY=${{ secrets.COSMOS_DB_KEY }}" >> $GITHUB_ENV
+        
       - name: Restore
         run: dotnet restore ./CompanyService.sln
 
