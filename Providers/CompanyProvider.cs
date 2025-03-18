@@ -30,7 +30,7 @@ namespace CompanyService.Providers
         {
            if (string.IsNullOrEmpty(company.Id.ToString()))
             {
-                company.Id = Guid.NewGuid();
+                company.Id = Guid.NewGuid().ToString();
 
             }
 
