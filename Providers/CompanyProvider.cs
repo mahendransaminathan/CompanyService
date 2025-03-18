@@ -30,11 +30,11 @@ namespace CompanyService.Providers
         {
            if (string.IsNullOrEmpty(company.Id.ToString()))
             {
-                company.Id = Guid.NewGuid().ToString();
+                company.Id = Guid.NewGuid();
 
             }
 
-            await mContainer.CreateItemAsync(company, new PartitionKey(company.Id));
+            await mContainer.CreateItemAsync(company, new PartitionKey(company.Id.ToString()));
 
         }       
     }         
