@@ -23,6 +23,7 @@ namespace CompanyService.Services
             }
             var newCompany = new Company
             {
+                Id = Guid.NewGuid().ToString(),
                 CompanyName = company.CompanyName,
                 RegistrationNumber = company.RegistrationNumber,
                 Address = company.Address,
