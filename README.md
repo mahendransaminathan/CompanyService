@@ -17,3 +17,14 @@
 15. Review + Create section will be displayed
 16. Click on the Create button
     The Cosmos DB account will be created
+
+1. Go to Azure Home Page
+2. Select the search box and enter the Azure Cosmos DB
+3. Select Azure Cosmos DB under services
+4. Newly created Cosmos DB account will be displayed
+5. Select the Cosmos DB account
+6. Under Azure Cosmos DB account, Click on +Add Container option
+7. New Container window will pop up at the right side of the screen
+8. 
+Go to the Created Cosmos DB account 
+
