@@ -5,7 +5,7 @@ namespace CompanyService.Entities
     public class Company
     {
         [Key]
-        public string Id { get; set; } 
+        public required string Id { get; set; } 
         public required string CompanyName { get; set; }
         public required string RegistrationNumber { get; set; }
         public required string Address { get; set; }
