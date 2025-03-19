@@ -19,6 +19,15 @@ Follow the below steps to create Azure App Service for backend
 • Click on Review + create button    
 • Click on Create button from "Review + create" tab  
 
+• Click on Download publish profile option to download the publish profile from your Company Service App Service  
+• Open the downloaded the publish profile and copy the content to notepad  
+
+• Go to Settings under Back end Github repository  
+• Scroll down to select Secrets and Variables under Security section on the left side of the screen  
+• Select on Actions option and click on New Repository secret button.  
+• Provide a name to this secret example Azure_Publish_Profile and paste the service principle from notepad  
+• Click on Add Secret button  
+
 # Create Cosmos DB by the following steps as given below
 
 1. Go to Azure Portal - https://portal.azure.com/#home
