@@ -1,23 +1,23 @@
-# Build, publish and deploy - Back End Service 
-Create an Azure Subscription from portal.azure.com (if not created already) 
-Follow the below steps to create Azure App Service for backend 
-• Search for "App Services" and select "App Services" from Services section 
-• Select Create menu option under App Services 
-• Select Web App option from the drop down menu 
-• Create Web App Page will be displayed 
-• Select one of the subscription from available subscriptions 
-• Create a new resource group by selecting "Create new" option 
-• Provide a resource group name example "PLA" and click on Ok button 
-• Enter Web App Name example CompanyService 
-• Select code Radio button for Publish option 
-• Select Runtime stack as .Net 9 (STS) 
-• Select Operating System as Windows 
-• Select near by region for Region example "East US 2" 
-• Under Pricing Plans leave default value for Windows Plan 
-• Select Free F1 for pricing plan 
-• Select Disabled option for Zone Redundancy 
-• Click on Review + create button  
-• Click on Create button from "Review + create" tab
+# Build, publish and deploy - Back End Service
+Create an Azure Subscription from portal.azure.com (if not created already)  
+Follow the below steps to create Azure App Service for backend   
+• Search for "App Services" and select "App Services" from Services section   
+• Select Create menu option under App Services   
+• Select Web App option from the drop down menu   
+• Create Web App Page will be displayed   
+• Select one of the subscription from available subscriptions   
+• Create a new resource group by selecting "Create new" option   
+• Provide a resource group name example "PLA" and click on Ok button   
+• Enter Web App Name example CompanyService   
+• Select code Radio button for Publish option   
+• Select Runtime stack as .Net 9 (STS)   
+• Select Operating System as Windows   
+• Select near by region for Region example "East US 2"   
+• Under Pricing Plans leave default value for Windows Plan   
+• Select Free F1 for pricing plan   
+• Select Disabled option for Zone Redundancy   
+• Click on Review + create button    
+• Click on Create button from "Review + create" tab  
 
 # Create Cosmos DB by the following steps as given below
 
