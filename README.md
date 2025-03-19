@@ -35,5 +35,24 @@
 15. Under "Enable analytical store capability to perform near real-time analytics on your operational data, without impacting the performance of transactional workloads." section, do not make any change
 16. Under "Azure Synapse Link is required for creating an analytical store container. Enable Synapse Link for this Cosmos DB account. " do not make any change.
 17. Click on Ok button to create the Cosmos DB and Container
- 
+
+ # Creating Connection String in Azure Cosmos DB
+ 1. Go to the created Azure Cosmos DB account
+ 2. Select "Data Explorer" at the left hand side of the screen
+ 3. Connect option will be displayed. Click on the connect option
+ 4. Copy the URI and Primary Connection String to your notepad
+ 5. Go to your CompanyService App service
+ 6. Select Settings at the left hand side of the screen
+ 7. Select Configuration under settings
+ 8. Click on the "Click here to go to Environment Varialbes menu" link
+ 9. Click on +Add button under App settings
+ 10.  Add/Edit Application setting window will pop up
+ 11.  Under Name*, Type COSMOS_DB_ENDPOINT
+ 12.  Under Value, copy the Primary Connection String from your notepad and paste it
+ 13.  Click on Apply button at the bottom of the screen
+ 14.  Click on +Add button again
+ 15.  Add/Edit Application setting window will pop up again
+ 16.  Under Name*, type COSMOS_DB_KEY
+ 17.  Under Value, copy the URI from your notepad and paste it
+ 18.  Click on Apply button at the bottom of the screen
 
