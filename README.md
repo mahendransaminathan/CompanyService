@@ -17,7 +17,23 @@ Follow the below steps to create Azure App Service for backend
 • Select Free F1 for pricing plan   
 • Select Disabled option for Zone Redundancy   
 • Click on Review + create button    
-• Click on Create button from "Review + create" tab  
+• Click on Create button from "Review + create" tab
+
+• Go to Azure Portal and select the PLAService app service  
+• Go to Settings section from left side of the screen and select Configuration section  
+• Under Default settings section, select "on" option for the following two fields  
+• Under Platform settings, Select on option for SCM Basic Auth Publishing credentials  
+• Select on option for FTP Basic Auth Publishing credentials  
+• click on save button to save the changes  
+
+• Click on Download publish profile option to download the publish profile from your Company Service App Service  
+• Open the downloaded the publish profile and copy the content to notepad  
+
+• Go to Settings under Back end Github repository  
+• Scroll down to select Secrets and Variables under Security section on the left side of the screen  
+• Select on Actions option and click on New Repository secret button.  
+• Provide a name to this secret example Azure_Publish_Profile and paste the service principle from notepad  
+• Click on Add Secret button  
 
 # Create Cosmos DB by the following steps as given below
 
@@ -61,19 +77,27 @@ Follow the below steps to create Azure App Service for backend
  1. Go to the created Azure Cosmos DB account
  2. Select "Data Explorer" at the left hand side of the screen
  3. Connect option will be displayed. Click on the connect option
- 4. Copy the URI and Primary Connection String to your notepad
+ 4. Copy the URI and Primary Key to your notepad
  5. Go to your CompanyService App service
  6. Select Settings at the left hand side of the screen
  7. Select Configuration under settings
  8. Click on the "Click here to go to Environment Varialbes menu" link
  9. Click on +Add button under App settings
  10.  Add/Edit Application setting window will pop up
- 11.  Under Name*, Type COSMOS_DB_ENDPOINT
- 12.  Under Value, copy the Primary Connection String from your notepad and paste it
+ 11.  Under Name*, Type COSMOS_DB_KEY
+ 12.  Under Value, copy the Primary Key from your notepad and paste it
  13.  Click on Apply button at the bottom of the screen
  14.  Click on +Add button again
  15.  Add/Edit Application setting window will pop up again
- 16.  Under Name*, type COSMOS_DB_KEY
+ 16.  Under Name*, type COSMOS_DB_ENDPOINT
  17.  Under Value, copy the URI from your notepad and paste it
  18.  Click on Apply button at the bottom of the screen
+
+# Instructions to follow
+1. Update front end URL in your Program.cs file in Back end service (Company Service)  
+2. When you are testing in Postman - with your URL from Company Service App service include /api/company
+3. Try connecting to SQL Server from SSMS. The SQL server may be in connecting mode, try multiple times connecting to SQL server from SSMS before connecting Postman or Front End.
+4. The way to kill the port 3000 if its already used. Add the following command in Package.json in the Front End Application code
+5. "start": "cmd /c \"for /f \"tokens=5\" %a in ('netstat -ano ^| findstr :3000') do taskkill /PID %a /F && react-scripts start || react-scripts start\""
+
 
