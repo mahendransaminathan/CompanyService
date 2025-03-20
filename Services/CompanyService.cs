@@ -23,7 +23,7 @@ namespace CompanyService.Services
             }
             var newCompany = new Company
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = company.Id,
                 CompanyName = company.CompanyName,
                 RegistrationNumber = company.RegistrationNumber,
                 Address = company.Address,
@@ -35,6 +35,11 @@ namespace CompanyService.Services
             Console.WriteLine("Person Data: " + company);       
 
             provider.AddPerson(company); 
+        }
+
+        public List<string> GetCompanyNames()
+        {
+            return provider.GetCompanyNames();            
         }
     }
 }

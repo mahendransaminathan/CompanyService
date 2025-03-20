@@ -37,5 +37,10 @@ namespace CompanyService.Providers
             await mContainer.CreateItemAsync(company, new PartitionKey(company.Id.ToString()));
 
         }       
+
+        public List<string> GetCompanyNames()
+        {
+            return mContainer.GetItemLinqQueryable<Company>(true).Select(x => x.CompanyName).ToList();
+        }
     }         
 }

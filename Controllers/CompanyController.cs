@@ -21,6 +21,13 @@ namespace CompanyService.Controllers
            companyService.AddCompany(company);
 
            return Ok(company);            
-        }        
+        }     
+
+        [HttpGet("names")] // GET: api/company/names
+        public IActionResult GetCompanyNames()
+        {
+            var companyNames = companyService.GetCompanyNames();
+            return Ok(companyNames);
+        }
     }
 }
