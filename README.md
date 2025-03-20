@@ -17,7 +17,14 @@ Follow the below steps to create Azure App Service for backend
 • Select Free F1 for pricing plan   
 • Select Disabled option for Zone Redundancy   
 • Click on Review + create button    
-• Click on Create button from "Review + create" tab  
+• Click on Create button from "Review + create" tab
+
+• Go to Azure Portal and select the PLAService app service
+• Go to Settings section from left side of the screen and select Configuration section
+• Under Default settings section, select "on" option for the following two fields
+• Under Platform settings, Select on option for SCM Basic Auth Publishing credentials
+• Select on option for FTP Basic Auth Publishing credentials
+• click on save button to save the changes
 
 • Click on Download publish profile option to download the publish profile from your Company Service App Service  
 • Open the downloaded the publish profile and copy the content to notepad  
