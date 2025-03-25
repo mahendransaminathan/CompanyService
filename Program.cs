@@ -23,12 +23,13 @@ builder.Services.AddSingleton<CosmosClient>(serviceProvider =>
     return new CosmosClient(cosmosEndPoint, cosmosKey);
 }
 );
-var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() ?? Array.Empty<string>();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost",
-        builder => builder.WithOrigins(allowedOrigins)  // Allow your frontend's URL
+        builder => builder.WithOrigins("http://localhost:3000",
+                                      "https://productlicenseapproval-bsb3a3buh3bwavfy.northeurope-01.azurewebsites.net"
+)  // Allow your frontend's URL
                           .AllowAnyHeader()                   // Allow all headers
                           .AllowAnyMethod()                   // Allow all methods (GET, POST, etc.)
                           .AllowCredentials());
